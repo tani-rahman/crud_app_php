@@ -3,85 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <!-- DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 
-    <title>Navbar</title>
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <title>User Management</title>
 </head>
 
-<body>
+<body class="bg-gray-100">
 
-<div class="bg-slate-100 shadow-sm">
-    <div class="navbar max-w-7xl mx-auto justify-center relative">
+<!-- Navbar -->
+<div class="bg-[#f1efef] shadow-sm py-4">
 
-        <!-- Mobile Dropdown -->
-        <div class="dropdown lg:hidden absolute left-4">
+    <div class="max-w-7xl mx-auto">
 
-            <div tabindex="0" role="button" class="btn btn-ghost">
+        <div class="navbar justify-center relative">
 
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="h-5 w-5"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor">
+            <!-- Mobile Menu -->
+            <div class="dropdown lg:hidden absolute left-4">
 
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 6h16M4 12h8m-8 6h16" />
-                </svg>
+                <div tabindex="0" role="button" class="btn btn-ghost">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+
+                    </svg>
+
+                </div>
+
+                <ul tabindex="0"
+                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+
+                    <li>
+                        <a href="index.php"
+                            class="text-[18px] font-medium text-gray-700 hover:text-black bg-transparent hover:bg-transparent">
+                            Add User
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="all-users.php"
+                            class="text-[18px] font-medium text-gray-700 hover:text-black bg-transparent hover:bg-transparent">
+                            All User
+                        </a>
+                    </li>
+
+                </ul>
 
             </div>
 
-            <ul tabindex="0"
-                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52">
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex">
 
-                <li>
-                    <a href="index.php"
-                       class="px-3 py-2 text-[17px] font-medium text-gray-500 hover:text-black">
-                        Add User
-                    </a>
-                </li>
+                <ul class="menu menu-horizontal gap-6 px-1">
 
-                <li>
-                    <a href="all-users.php"
-                       class="px-3 py-2 text-[17px] font-medium text-gray-500 hover:text-black">
-                        All User
-                    </a>
-                </li>
+                    <li>
+                        <a href="index.php"
+                            class="text-[18px] font-medium text-gray-700 hover:text-black bg-transparent hover:bg-transparent">
+                            Add User
+                        </a>
+                    </li>
 
-            </ul>
-        </div>
+                    <li>
+                        <a href="all-users.php"
+                            class="text-[18px] font-medium text-gray-700 hover:text-black bg-transparent hover:bg-transparent">
+                            All User
+                        </a>
+                    </li>
 
-        <!-- Desktop Menu -->
-        <div class="hidden lg:flex">
+                </ul>
 
-            <ul class="menu menu-horizontal gap-4">
-
-                <li>
-                    <a href="index.php"
-                       class="px-3 py-2 text-[17px] font-medium text-gray-500 hover:text-black">
-                        Add User
-                    </a>
-                </li>
-
-                <li>
-                    <a href="all-users.php"
-                       class="px-3 py-2 text-[17px] font-medium text-gray-500 hover:text-black">
-                        All User
-                    </a>
-                </li>
-
-            </ul>
+            </div>
 
         </div>
 
     </div>
+
 </div>
-<?php
-include "footer.php";
-?>
