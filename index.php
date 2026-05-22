@@ -1,6 +1,16 @@
-<?php include 'header.php'; ?>
+<?php
+session_start();
+include 'header.php';
+?>
 
 <div class="container mx-auto px-4 py-8">
+
+    <!-- Success Message -->
+    <?php if (isset($_SESSION['success'])) { ?>
+        <div class="alert alert-success mb-5">
+            <?= $_SESSION['success']; ?>
+        </div>
+    <?php } ?>
 
     <div class="card bg-base-100 shadow-xl max-w-4xl mx-auto p-6">
 
@@ -12,10 +22,11 @@
         </div>
 
         <!-- Form Start -->
-        <form action="add-user.php" method="POST">
+        <form action="./Controllers/AddUserController.php" method="POST" enctype="multipart/form-data">
 
             <!-- Name -->
             <div class="mb-4">
+
                 <label for="name" class="block mb-2 font-semibold">
                     Name
                 </label>
@@ -26,12 +37,19 @@
                     id="name"
                     class="input input-bordered w-full"
                     placeholder="Enter your name"
-                    required
                 >
+
+                <?php if (isset($_SESSION['name_err'])) { ?>
+                    <span class="text-sm text-red-500 mt-1">
+                        <?= $_SESSION['name_err']; ?>
+                    </span>
+                <?php } ?>
+
             </div>
 
             <!-- Email -->
             <div class="mb-4">
+
                 <label for="email" class="block mb-2 font-semibold">
                     Email
                 </label>
@@ -42,12 +60,19 @@
                     id="email"
                     class="input input-bordered w-full"
                     placeholder="Enter your email"
-                    required
                 >
+
+                <?php if (isset($_SESSION['email_err'])) { ?>
+                    <span class="text-sm text-red-500 mt-1">
+                        <?= $_SESSION['email_err']; ?>
+                    </span>
+                <?php } ?>
+
             </div>
 
             <!-- Phone -->
             <div class="mb-4">
+
                 <label for="phone" class="block mb-2 font-semibold">
                     Phone
                 </label>
@@ -58,12 +83,19 @@
                     id="phone"
                     class="input input-bordered w-full"
                     placeholder="Enter your phone number"
-                    required
                 >
+
+                <?php if (isset($_SESSION['phone_err'])) { ?>
+                    <span class="text-sm text-red-500 mt-1">
+                        <?= $_SESSION['phone_err']; ?>
+                    </span>
+                <?php } ?>
+
             </div>
 
             <!-- Description -->
             <div class="mb-5">
+
                 <label for="description" class="block mb-2 font-semibold">
                     Description
                 </label>
@@ -71,15 +103,14 @@
                 <textarea
                     name="description"
                     id="description"
+                    class="textarea textarea-bordered w-full"
                 ></textarea>
 
-                <p class="text-sm text-gray-500 mt-1">
-                    Write a short description about yourself.
-                </p>
             </div>
 
             <!-- Experience -->
             <div class="mb-5">
+
                 <label for="experience" class="block mb-2 font-semibold">
                     Experience
                 </label>
@@ -87,15 +118,14 @@
                 <textarea
                     name="experience"
                     id="experience"
+                    class="textarea textarea-bordered w-full"
                 ></textarea>
 
-                <p class="text-sm text-gray-500 mt-1">
-                    Add your work experience or skills.
-                </p>
             </div>
 
             <!-- Project -->
             <div class="mb-5">
+
                 <label for="project" class="block mb-2 font-semibold">
                     Project
                 </label>
@@ -103,11 +133,32 @@
                 <textarea
                     name="project"
                     id="project"
+                    class="textarea textarea-bordered w-full"
                 ></textarea>
 
-                <p class="text-sm text-gray-500 mt-1">
-                    Mention your completed or ongoing projects.
-                </p>
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="mb-4">
+
+                <label for="profile_image" class="block mb-2 font-semibold">
+                    Profile Picture
+                </label>
+
+                <input
+                    type="file"
+                    name="profile_image"
+                    id="profile_image"
+                    class="file-input file-input-bordered w-full"
+                    accept="image/*"
+                >
+
+                <?php if (isset($_SESSION['profile_image_err'])) { ?>
+                    <span class="text-sm text-red-500 mt-1">
+                        <?= $_SESSION['profile_image_err']; ?>
+                    </span>
+                <?php } ?>
+
             </div>
 
             <!-- Submit Button -->
@@ -116,37 +167,36 @@
                 name="submit"
                 class="btn btn-primary w-full mt-4"
             >
-                Add User
+                Submit
             </button>
 
         </form>
-        <!-- Form End -->
 
     </div>
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php
+session_unset();
+include 'footer.php';
+?>
 
 <!-- Summernote Initialize -->
 <script>
     $(document).ready(function () {
 
-        // Description Editor
         $('#description').summernote({
             placeholder: 'Write your description...',
             tabsize: 2,
             height: 180
         });
 
-        // Experience Editor
         $('#experience').summernote({
             placeholder: 'Write your experience...',
             tabsize: 2,
             height: 180
         });
 
-        // Project Editor
         $('#project').summernote({
             placeholder: 'Write your project details...',
             tabsize: 2,
