@@ -71,16 +71,14 @@ if (isset($_POST['submit'])) {
     $new_image_name = uniqid('user_') . '.' . $file_extension;
     $image_tmp = $profile_image['tmp_name'];
 
-    $image_url = 'uploads/' . $new_image_name;
+    $image_url = 'http://localhost/Field%20work/CRUD_app/uploads/' . $new_image_name;
 
     move_uploaded_file($image_tmp, '../uploads/' . $new_image_name);
 
     // INSERT INTO DATABASE (FIXED)
-    $stmt = $conn->prepare("
-        INSERT INTO users 
-        (Name, Email, Description, Experience, Project, image_name, image_url)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    ");
+    $stmt = $conn->prepare(
+        "INSERT INTO users (Name, Email, Description, Experience, Project, image_name, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    );
 
     $stmt->bind_param(
         "sssssss",

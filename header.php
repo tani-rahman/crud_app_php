@@ -66,7 +66,7 @@
                     </li>
 
                     <li>
-                        <a href="all-users.php"
+                        <a href="./allUsers.php"
                             class="text-[18px] font-medium text-gray-700 hover:text-black bg-transparent hover:bg-transparent">
                             All User
                         </a>
@@ -89,7 +89,7 @@
                     </li>
 
                     <li>
-                        <a href="all-users.php"
+                        <a href="allUsers.php"
                             class="text-[18px] font-medium text-gray-700 hover:text-black bg-transparent hover:bg-transparent">
                             All User
                         </a>
